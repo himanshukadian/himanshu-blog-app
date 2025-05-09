@@ -1,0 +1,48 @@
+/* Modern Quill Editor Custom Styles */
+.ql-toolbar.ql-snow {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 42px;
+  border-radius: 8px 8px 0 0;
+  font-family: inherit;
+  background: transparent;
+  max-width: 100vw;
+  overflow-x: auto;
+}
+.ql-container.ql-snow, .ql-editor {
+  border-radius: 0 0 8px 8px;
+  min-height: 160px;
+  font-family: inherit;
+  background: transparent !important;
+  max-width: 100vw;
+}
+
+/* Responsive: shrink toolbar font size on mobile */
+@media (max-width: 600px) {
+  .ql-toolbar.ql-snow {
+    font-size: 0.95rem;
+    padding: 4px 2px;
+  }
+  .ql-container.ql-snow {
+    font-size: 1rem;
+    padding: 0 2px;
+  }
+}
+
+/* Dark mode support */
+[data-theme='dark'] .ql-toolbar.ql-snow,
+[data-theme='dark'] .ql-container.ql-snow,
+[data-theme='dark'] .ql-editor {
+  background: #232946 !important;
+  color: #fff;
+  border-color: #232946;
+}
+[data-theme='dark'] .ql-toolbar.ql-snow .ql-picker,
+[data-theme='dark'] .ql-toolbar.ql-snow .ql-stroke {
+  color: #fff;
+  stroke: #fff;
+}
+[data-theme='dark'] .ql-toolbar.ql-snow .ql-picker-options {
+  background: #232946;
+  color: #fff;
+} 

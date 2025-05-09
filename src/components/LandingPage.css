@@ -1,0 +1,102 @@
+.landing-hero-bg {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-bottom: 60px;
+  padding-top: 80px !important;
+}
+
+/* Fix extra lines/borders in featured cards */
+.featured-card .card-body,
+.featured-card .card-footer {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.featured-card .card-body {
+  padding: 0;
+}
+
+.featured-card .card-title,
+.featured-card .card-text {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-cta {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,124,240,0.12);
+}
+.hero-cta:hover {
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+  color: #fff;
+}
+
+.featured-card {
+  border: none;
+  border-radius: 18px;
+  background: var(--card-bg, var(--bg-secondary));
+  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+}
+
+.featured-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,124,240,0.18);
+  transform: translateY(-6px) scale(1.03);
+  border-color: var(--secondary-color);
+}
+
+.featured-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.featured-card .card-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.featured-card .btn {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.featured-card .btn:hover {
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+  color: #fff;
+}
+
+.hero-img {
+  max-width: 520px;
+  max-height: 420px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+} 
