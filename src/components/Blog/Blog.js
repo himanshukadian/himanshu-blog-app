@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Row, Col, Card, Button, Form, InputGroup, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form, InputGroup } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import { FaSearch, FaCalendarAlt, FaClock, FaTag } from 'react-icons/fa';
-import aboutImg from '../../Assets/about.png';
+
 import './Blog.css';
 import api from '../../api';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -83,9 +83,9 @@ const Blog = () => {
 
   // Filter by search query (client-side)
   const filteredPosts = articles.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch = (post.title || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
       (post.content && post.content.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (post.tags && post.tags.some(tag => tag.name.toLowerCase().includes(searchQuery.toLowerCase())));
+      (post.tags && post.tags.some(tag => (tag?.name || String(tag)).toLowerCase().includes(searchQuery.toLowerCase())));
     return matchesSearch;
   });
 
@@ -195,7 +195,7 @@ const Blog = () => {
                 className={`category-btn ${selectedType === type ? 'active' : ''} ${isDark ? 'dark' : ''}`}
                 onClick={() => { setSelectedType(type); setSelectedTags([]); setPage(1); }}
               >
-                {type.charAt(0).toUpperCase() + type.slice(1)}
+                {String(type ?? '').charAt(0).toUpperCase() + String(type ?? '').slice(1)}
               </motion.button>
             ))}
           </div>
@@ -344,7 +344,7 @@ const Blog = () => {
                           <div className="post-meta mb-3">
                             <span className="me-3">
                               <FaCalendarAlt className="me-1" />
-                              {post.date && new Date(post.date).toLocaleDateString()}
+                              {new Date(post.publishedAt || post.createdAt || '').toLocaleDateString()}
                             </span>
                             <span>
                               <FaClock className="me-1" />
@@ -352,21 +352,24 @@ const Blog = () => {
                             </span>
                           </div>
                           <div className="tags-container mb-3">
-                            {post.tags && post.tags.map((tag, index) => (
-                              <span
-                                key={index}
-                                className="tag"
-                                style={{ cursor: "pointer" }}
-                                onClick={() => {
-                                  setSelectedTags([tag.name]);
-                                  setSelectedType("All");
-                                  setPage(1);
-                                }}
-                              >
-                                <FaTag className="me-1" />
-                                {tag.name}
-                              </span>
-                            ))}
+                            {post.tags && post.tags.map((tag, index) => {
+                              const tagName = tag?.name || tag;
+                              return (
+                                <span
+                                  key={index}
+                                  className="tag"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => {
+                                    setSelectedTags([tagName]);
+                                    setSelectedType("All");
+                                    setPage(1);
+                                  }}
+                                >
+                                  <FaTag className="me-1" />
+                                  {tagName}
+                                </span>
+                              );
+                            })}
                           </div>
                           <Button 
                             variant="primary" 

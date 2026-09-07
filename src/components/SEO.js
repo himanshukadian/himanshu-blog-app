@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, image }) => {
   const siteTitle = "Himanshu Chaudhary - Software Engineer";
   const siteDescription = description || "Software Engineer specializing in Full Stack Development, Cloud Computing, and AI solutions";
-  const siteImage = image || "/og-image.jpg";
+  const siteImage = image || (typeof window !== 'undefined' ? window.location.origin : '') + '/og-image.jpg';
   const siteUrl = "https://himanshuchaudhary.com"; // Replace with your actual domain
 
   return (

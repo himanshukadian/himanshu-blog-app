@@ -19,7 +19,6 @@ import LandingPage from './components/LandingPage';
 
 const Blog = lazy(() => import("./components/Blog/Blog"));
 const BlogDetail = lazy(() => import("./components/Blog/BlogDetail"));
-const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminPosts = lazy(() => import("./components/AdminPosts"));
 const AdminTags = lazy(() => import("./components/AdminTags"));
 const AdminTypes = lazy(() => import("./components/AdminTypes"));

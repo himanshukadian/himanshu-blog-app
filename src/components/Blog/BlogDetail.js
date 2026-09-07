@@ -46,7 +46,7 @@ const BlogDetail = () => {
           </Button>
           <h1 className="mb-3" style={{ fontWeight: 800, fontSize: '2.2rem', color: 'var(--text-primary)' }}>{post.title}</h1>
           <div className="d-flex align-items-center mb-3" style={{ gap: '1.5rem', flexWrap: 'wrap' }}>
-            <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}><FaCalendarAlt className="me-1" />{post.date && new Date(post.date).toLocaleDateString()}</span>
+            <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}><FaCalendarAlt className="me-1" />{new Date(post.publishedAt || post.createdAt || '').toLocaleDateString()}</span>
             <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}><FaClock className="me-1" />5 min read</span>
             <div className="tags-container">
               {post.tags && post.tags.map((tag, idx) => (
@@ -55,10 +55,10 @@ const BlogDetail = () => {
             </div>
           </div>
           <div style={{ fontSize: '1.15rem', lineHeight: 1.8, marginTop: 24 }}>
-            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content || '' }} />
             <div style={{ marginTop: 32, color: 'var(--text-secondary)', fontStyle: 'italic', fontSize: '1rem' }}>
               <hr />
-              <div>Author: <span style={{ color: 'var(--primary-color)', fontWeight: 600 }}>{post.author}</span></div>
+              <div>Author: <span style={{ color: 'var(--primary-color)', fontWeight: 600 }}>{post.author?.name || ''}</span></div>
             </div>
           </div>
         </div>

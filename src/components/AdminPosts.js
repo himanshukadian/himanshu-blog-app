@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
-import { Box, Button, TextField, Paper, Typography, CircularProgress, Snackbar, Alert, Stack, IconButton, Tooltip, Dialog, DialogTitle, DialogContent, TextField as MuiTextField, DialogActions } from '@mui/material';
+import { Box, Button, TextField, Typography, CircularProgress, Snackbar, Alert, Stack, IconButton, Tooltip, Dialog, DialogTitle, DialogContent, TextField as MuiTextField, DialogActions } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -143,9 +143,9 @@ const AdminPosts = () => {
       title: post.title,
       slug: post.slug || '',
       content: post.content,
-      type: post.type,
-      tags: post.tags.map(t => t.name).join(', '),
-      author: post.author || ''
+      type: post.type?.name ?? post.type ?? '',
+      tags: post.tags?.map(t => t.name || t).filter(Boolean).join(', ') ?? '',
+      author: post.author?.name ?? post.author ?? ''
     });
     if (editor) {
       editor.commands.setContent(post.content || '');
@@ -182,7 +182,13 @@ const AdminPosts = () => {
   const columns = [
     { field: 'title', headerName: 'Title', flex: 1, minWidth: 120 },
     { field: 'slug', headerName: 'Slug', flex: 1, minWidth: 120 },
-    { field: 'type', headerName: 'Type', flex: 1, minWidth: 80 },
+    {
+      field: 'type',
+      headerName: 'Type',
+      flex: 1,
+      minWidth: 80,
+      renderCell: (params) => params.row.type?.name ?? params.row.type ?? ''
+    },
     {
       field: 'tags',
       headerName: 'Tags',
@@ -190,10 +196,16 @@ const AdminPosts = () => {
       minWidth: 120,
       renderCell: (params) => {
         if (!params.row || !Array.isArray(params.row.tags)) return '';
-        return params.row.tags.map(tag => tag && tag.name ? tag.name : '').filter(Boolean).join(', ');
+        return params.row.tags.map(tag => (tag && tag.name) ? tag.name : tag || '').filter(Boolean).join(', ');
       }
     },
-    { field: 'author', headerName: 'Author', flex: 1, minWidth: 120 },
+    {
+      field: 'author',
+      headerName: 'Author',
+      flex: 1,
+      minWidth: 120,
+      renderCell: (params) => params.row.author?.name ?? params.row.author ?? ''
+    },
     {
       field: 'actions',
       headerName: 'Actions',

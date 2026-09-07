@@ -50,7 +50,7 @@ const LandingPage = () => {
                 <Card.Body>
                   <Card.Title>{post.title}</Card.Title>
                   <Card.Text>
-                    {post.content.replace(/<[^>]+>/g, '').substring(0, 120)}...
+                    {(post.content || '').replace(/<[^>]+>/g, '').substring(0, 120)}...
                   </Card.Text>
                   <Button
                     variant="outline-primary"
@@ -61,7 +61,7 @@ const LandingPage = () => {
                 </Card.Body>
                 <Card.Footer>
                   <small className="text-muted">
-                    By {post.author || "Unknown"} &middot; {new Date(post.date).toLocaleDateString()}
+                    By {post.author?.name || post.author || "Unknown"} &middot; {new Date(post.publishedAt || post.createdAt || '').toLocaleDateString()}
                   </small>
                 </Card.Footer>
               </Card>

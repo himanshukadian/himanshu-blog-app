@@ -6,7 +6,6 @@ import { useTheme } from "../context/ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 function NavBar() {
-  console.log('Navbar rendered');
   const [expand, setExpand] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
@@ -39,7 +38,6 @@ function NavBar() {
             : 'rgba(255, 255, 255, 0.98)',
           boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
           borderBottom: isDark ? '1px solid #232946' : '1px solid #eaeaea',
-          border: '3px solid red', // DEBUG: Remove after confirming
           padding: '0.7rem 0.5rem',
           minHeight: 64,
         }}

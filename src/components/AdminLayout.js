@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Box, IconButton, CssBaseline, Divider, useMediaQuery } from '@mui/material';
+import api from '../api';
+import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Box, IconButton, CssBaseline, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArticleIcon from '@mui/icons-material/Article';
 import LabelIcon from '@mui/icons-material/Label';
@@ -26,6 +27,16 @@ const AdminLayout = () => {
   const { isDark, toggleTheme } = useTheme();
   const isMobile = useMediaQuery('(max-width:900px)');
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) return;
+    api.get('/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+      .catch(() => {
+        localStorage.removeItem('adminToken');
+        navigate('/login');
+      });
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
