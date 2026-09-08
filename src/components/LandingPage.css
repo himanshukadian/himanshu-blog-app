@@ -127,6 +127,26 @@
   padding: 2rem;
 }
 
+/* — All writing link — */
+.writing-footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+.writing-all-link {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #00ff41;
+  text-decoration: none;
+  transition: text-shadow 200ms ease-out;
+}
+
+.writing-all-link:hover {
+  color: #00ff41;
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+}
+
 /* — Responsive (≤640px) — */
 @media (max-width: 640px) {
   .writing-card {

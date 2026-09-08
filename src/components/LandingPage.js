@@ -88,6 +88,12 @@ const LandingPage = () => {
         {status === "error" && (
           <div className="writing-status">the blog is unreachable right now.</div>
         )}
+
+        <div className="writing-footer">
+          <Link className="writing-all-link" to="/articles">
+            All writing →
+          </Link>
+        </div>
       </Container>
     </div>
   );
