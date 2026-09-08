@@ -152,10 +152,9 @@ const Blog = () => {
         >
           <h2 className="terminal-section-title">Writings</h2>
 
-          {/* Search Bar */}
           <div className="search-container mb-4">
             <InputGroup className="search-input-group">
-              <InputGroup.Text className={`search-icon ${isDark ? 'bg-dark text-light' : 'bg-light'}`}>
+              <InputGroup.Text className="search-icon">
                 <FaSearch />
               </InputGroup.Text>
               <Form.Control
@@ -163,7 +162,7 @@ const Blog = () => {
                 placeholder="Search writings…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`search-input ${isDark ? 'bg-dark text-light' : 'bg-light'}`}
+                className="search-input"
                 aria-label="Search writings"
               />
             </InputGroup>

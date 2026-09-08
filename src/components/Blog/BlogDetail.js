@@ -81,8 +81,8 @@ const BlogDetail = () => {
     return (
       <Container className="py-5 text-center">
         <h2>Article Not Found</h2>
-        <Button variant="primary" onClick={() => navigate('/articles')} className="mt-3">
-          <FaArrowLeft className="me-2" />Back to Writing
+        <Button variant="primary" onClick={() => navigate('/writings')} className="mt-3">
+          <FaArrowLeft className="me-2" />Back to writings
         </Button>
       </Container>
     );
@@ -91,9 +91,9 @@ const BlogDetail = () => {
   return (
     <section className="terminal-detail resume-section" style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
       <Container>
-        <div style={{ maxWidth: 760, margin: '0 auto', padding: '3rem 0' }}>
-          <Button variant="link" onClick={() => navigate('/articles')} className="mb-3" style={{ textDecoration: 'none', color: '#00ff41', fontWeight: 600 }}>
-            <FaArrowLeft className="me-2" />Back to Writing
+        <div style={{ maxWidth: 760, padding: '3rem 0' }}>
+          <Button variant="link" onClick={() => navigate('/writings')} className="mb-3" style={{ textDecoration: 'none', color: '#00ff41', fontWeight: 600, paddingLeft: 0 }}>
+            <FaArrowLeft className="me-2" />Back to writings
           </Button>
           <h1 className="mb-3" style={{ fontWeight: 600, fontSize: 'clamp(1.7rem,3.5vw,2.3rem)', lineHeight: 1.25, color: '#ffffff', fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}>{post.title}</h1>
           <div className="d-flex align-items-center mb-3" style={{ gap: '0.5rem', flexWrap: 'wrap', fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>
@@ -105,7 +105,7 @@ const BlogDetail = () => {
             {post.tags && post.tags.length > 0 && <span>·</span>}
             <span>
               {post.tags && post.tags.map((tag, idx) => (
-                <span key={idx} className="detail-tag" onClick={() => navigate('/articles?tag=' + encodeURIComponent(tag.name))}>{'#' + tag.name}</span>
+                <span key={idx} className="detail-tag" onClick={() => navigate('/writings')}>{'#' + tag.name}</span>
               ))}
             </span>
           </div>
