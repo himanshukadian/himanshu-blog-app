@@ -30,8 +30,8 @@
 
 .terminal-detail .container,
 .terminal-detail .container-fluid {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 /* Neutralize style.css .resume-section .btn overrides on the back link */
