@@ -27,19 +27,35 @@
 }
 
 .navbar.terminal-navbar .nav-link.terminal-nav-link.active,
-.navbar.terminal-navbar .nav-link.terminal-nav-link:focus {
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus-visible {
   color: #00ff41 !important;
   text-shadow: 0 0 8px rgba(0, 255, 65, 0.55);
 }
 
-/* k9s-style ">" cursor prefix on hover/active */
+/* k9s-style ">" cursor prefix on active / keyboard focus */
 .navbar.terminal-navbar .nav-link.terminal-nav-link::before {
   content: "";
   color: #00ff41;
 }
 .navbar.terminal-navbar .nav-link.terminal-nav-link.active::before,
-.navbar.terminal-navbar .nav-link.terminal-nav-link:focus::before {
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus-visible::before {
   content: "> ";
+}
+
+/* No default focus ring on mouse clicks; styled green ring only for keyboard */
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus:not(:focus-visible),
+.navbar.terminal-navbar .navbar-brand.terminal-brand:focus:not(:focus-visible),
+.navbar.terminal-navbar .navbar-toggler:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus-visible,
+.navbar.terminal-navbar .navbar-brand.terminal-brand:focus-visible,
+.navbar.terminal-navbar .navbar-toggler:focus-visible {
+  outline: 2px solid #00ff41;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* === FOOTER === */
