@@ -20,6 +20,11 @@
   line-height: 1.25 !important;
 }
 
+.terminal-detail .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .terminal-detail .markdown-content {
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.05rem;
