@@ -1,14 +1,36 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Container, Row, Col, Card, Button, Form, InputGroup } from 'react-bootstrap';
+import { Container, Form, InputGroup, Button } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
-import { FaSearch, FaCalendarAlt, FaClock, FaTag } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 import './Blog.css';
 import api from '../../api';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const PAGE_SIZE = 12;
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+const toPlainText = (html) =>
+  String(html || '')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<img[^>]*>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const estimateReadingTime = (post) => {
+  if (post.readingTime && Number(post.readingTime) > 0) return `${post.readingTime} min read`;
+  const words = toPlainText(post.content).split(' ').filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+};
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -354,75 +376,47 @@ const Blog = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="blog-posts-grid"
+              className="writing-list"
             >
-              <Row>
-                {filteredPosts.map((post) => (
-                  <Col key={post._id} md={6} lg={4} className="mb-4 d-flex align-items-stretch">
-                    <motion.div
-                      variants={itemVariants}
-                      transition={{ duration: 0.2 }}
-                      className="w-100"
-                    >
-                      <Card className="project-card-view h-100 d-flex flex-column justify-content-between">
-                        <Card.Body className="d-flex flex-column">
-                          <Card.Title className="h4 mb-3">{post.title}</Card.Title>
-                          <div 
-                            className="card-text card-excerpt mb-4" 
-                            dangerouslySetInnerHTML={{ 
-                              __html: post.content ? 
-                                post.content.replace(/<[^>]*>/g, '').substring(0, 120) + '...' : 
-                                '' 
-                            }} 
-                          />
-                          <div className="post-meta mb-3">
-                            <span className="me-3">
-                              <FaCalendarAlt className="me-1" />
-                              {new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                            </span>
-                            <span>
-                              <FaClock className="me-1" />
-                              5 min read
-                            </span>
-                          </div>
-                          <div className="tags-container mb-3">
-                            {post.tags && post.tags.map((tag, index) => {
-                              const tagName = tag?.name || tag;
-                              return (
-                                <span
-                                  key={index}
-                                  className="tag"
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() => {
-                                    setSelectedTags([tagName]);
-                                    setSelectedType("All");
-                                    setPage(1);
-                                  }}
-                                >
-                                  <FaTag className="me-1" />
-                                  {tagName}
-                                </span>
-                              );
-                            })}
-                          </div>
-                          <Button 
-                            variant="primary" 
-                            className="w-100 read-more-btn mt-auto"
-                            onClick={() => navigate(`/${post.slug}`)}
-                          >
-                            Read Article
-                          </Button>
-                        </Card.Body>
-                      </Card>
-                    </motion.div>
-                  </Col>
-                ))}
-              </Row>
+              {filteredPosts.map((post) => {
+                const tags = (post.tags || [])
+                  .slice(0, 3)
+                  .map((t) => (typeof t === 'string' ? t : t?.name))
+                  .filter(Boolean);
+                const date = dateFormatter.format(new Date(post.publishedAt || post.createdAt));
+                return (
+                  <motion.div
+                    key={post._id}
+                    variants={itemVariants}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <article className="writing-card">
+                      <div className="writing-card-header">
+                        <Link className="writing-card-title" to={`/${post.slug}`}>
+                          {post.title}
+                        </Link>
+                      </div>
+                      <div className="writing-card-meta">
+                        <span className="writing-card-date">{date}</span>
+                        <span className="writing-card-separator">·</span>
+                        <span className="writing-card-reading-time">{estimateReadingTime(post)}</span>
+                      </div>
+                      {tags.length > 0 && (
+                        <div className="writing-card-tags">
+                          {tags.map((tag) => (
+                            <span className="writing-tag" key={tag}>{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </AnimatePresence>
 
           {/* Pagination Controls */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32 }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 32 }}>
             <Button
               variant="secondary"
               disabled={page === 1}

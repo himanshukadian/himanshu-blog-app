@@ -142,6 +142,126 @@
   box-shadow: 0 0 14px rgba(0, 255, 65, 0.45) !important;
 }
 
+/* ============================================================
+   Article cards — portfolio writing-card style
+   ============================================================ */
+
+.writing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.writing-card {
+  display: block;
+  padding: 16px 20px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 255, 65, 0.1);
+  border-left: 2px solid #00ff41;
+  text-decoration: none;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+}
+
+.writing-card:hover {
+  border-color: rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+  transform: translateY(-1px);
+  will-change: transform;
+}
+
+.writing-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.writing-card-title {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 500;
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: color 200ms ease-out, text-shadow 200ms ease-out;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.writing-card-title:hover {
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.writing-card-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.writing-card-date,
+.writing-card-reading-time {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.writing-card-separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+}
+
+.writing-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.writing-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 255, 65, 0.08);
+  color: #00ff41;
+  border: 1px solid rgba(0, 255, 65, 0.15);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .writing-card {
+    padding: 12px 14px;
+  }
+
+  .writing-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .writing-card-meta {
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writing-card {
+    transition: none;
+  }
+
+  .writing-card:hover {
+    transform: none;
+    will-change: auto;
+  }
+
+  .writing-card-title {
+    transition: none;
+  }
+}
+
 /* Blog Card Styles */
 .blog-card,
 .resume-section#blog .project-card-view,
