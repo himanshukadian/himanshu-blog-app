@@ -91,10 +91,13 @@ const BlogDetail = () => {
   return (
     <section className="terminal-detail resume-section" style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
       <Container fluid>
-        <div style={{ maxWidth: 760, padding: '3rem 0' }}>
-          <Button variant="link" onClick={() => navigate('/writings')} className="mb-3" style={{ textDecoration: 'none', color: '#00ff41', fontWeight: 600, paddingLeft: 0, paddingRight: 0 }}>
+        <div style={{ maxWidth: 760, padding: '3rem 0 0', margin: 0 }}>
+          <Button variant="link" onClick={() => navigate('/writings')} className="mb-4" style={{ textDecoration: 'none', color: '#00ff41', fontWeight: 600, paddingLeft: 0, paddingRight: 0, lineHeight: 1 }}>
             <FaArrowLeft className="me-2" />Back to writings
           </Button>
+        </div>
+        <hr className="back-divider" />
+        <div style={{ maxWidth: 760, padding: '2rem 0 3rem' }}>
           <h1 className="mb-3" style={{ fontWeight: 600, fontSize: 'clamp(1.7rem,3.5vw,2.3rem)', lineHeight: 1.25, color: '#ffffff', fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}>{post.title}</h1>
           <div className="d-flex align-items-center mb-3" style={{ gap: '0.5rem', flexWrap: 'wrap', fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>
             <span><FaCalendarAlt className="me-1" />{new Date(post.publishedAt || post.createdAt || '').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
