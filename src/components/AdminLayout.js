@@ -32,6 +32,12 @@ const AdminLayout = () => {
     const token = localStorage.getItem('adminToken');
     if (!token) return;
     api.get('/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+      .then(res => {
+        if (res.data.data?.user?.role !== 'admin') {
+          localStorage.removeItem('adminToken');
+          navigate('/');
+        }
+      })
       .catch(() => {
         localStorage.removeItem('adminToken');
         navigate('/login');

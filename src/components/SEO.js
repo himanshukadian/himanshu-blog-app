@@ -2,10 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, image }) => {
-  const siteTitle = "Himanshu Chaudhary - Software Engineer";
-  const siteDescription = description || "Software Engineer specializing in Full Stack Development, Cloud Computing, and AI solutions";
+  const siteTitle = "Himanshu's Writing";
+  const siteDescription = description || "Himanshu's Writing — articles on software engineering, AI, and systems.";
   const siteImage = image || (typeof window !== 'undefined' ? window.location.origin : '') + '/og-image.jpg';
-  const siteUrl = "https://himanshuchaudhary.com"; // Replace with your actual domain
+  const siteUrl = "https://blog.buildwithhimanshu.com";
 
   return (
     <Helmet>
@@ -29,7 +29,7 @@ const SEO = ({ title, description, image }) => {
 
       {/* Additional meta tags */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#00e6fe" />
+      <meta name="theme-color" content="#00ff41" />
       <meta name="keywords" content="software engineer, full stack developer, cloud computing, AI, machine learning, react, nodejs" />
       <meta name="author" content="Himanshu Chaudhary" />
 

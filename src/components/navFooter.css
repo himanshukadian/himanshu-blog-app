@@ -1,0 +1,145 @@
+/* ---------------------------------------------------------------------------
+   Terminal-theme chrome for Navbar + Footer.
+   Palette: black bg, terminal green #00ff41, Fira Code, muted white.
+   Imported only by Navbar.js and Footer.js (Fira Code itself is loaded via index.html).
+--------------------------------------------------------------------------- */
+
+/* === NAVBAR === */
+.navbar.terminal-navbar {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  letter-spacing: 0.03em;
+}
+
+.navbar.terminal-navbar .navbar-brand.terminal-brand {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  color: #00ff41 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.45);
+  letter-spacing: 0.06em;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+}
+
+.navbar.terminal-navbar .nav-link.terminal-nav-link {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.navbar.terminal-navbar .nav-link.terminal-nav-link.active,
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus {
+  color: #00ff41 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.55);
+}
+
+/* k9s-style ">" cursor prefix on hover/active */
+.navbar.terminal-navbar .nav-link.terminal-nav-link::before {
+  content: "";
+  color: #00ff41;
+}
+.navbar.terminal-navbar .nav-link.terminal-nav-link.active::before,
+.navbar.terminal-navbar .nav-link.terminal-nav-link:focus::before {
+  content: "> ";
+}
+
+/* === FOOTER === */
+.footer.terminal-footer {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  background: #000000 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  letter-spacing: 0.03em;
+}
+
+.footer.terminal-footer h3 {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500;
+}
+
+.footer.terminal-footer .footer-icons a.terminal-social-link {
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-shadow: none !important;
+}
+
+/* === MEYRIVA FOOTER (portfolio-matching) === */
+.meyriva-footer {
+  background: #000000 !important;
+  border-top: 1px solid rgba(0, 255, 65, 0.1) !important;
+  padding: 3rem 0 2rem 0 !important;
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+}
+
+.meyriva-footer h3,
+.footer.meyriva-footer h3 {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500 !important;
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+}
+
+.meyriva-footer-icons {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1.5rem !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.meyriva-social-link {
+  color: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 4px !important;
+  padding: 0.6em !important;
+  font-size: 1.3em !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: transparent !important;
+  border: 1px solid rgba(0, 255, 65, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  text-decoration: none !important;
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+}
+
+.meyriva-social-link:hover {
+  color: #00ff41 !important;
+  background: rgba(0, 255, 65, 0.08) !important;
+  border-color: rgba(0, 255, 65, 0.35) !important;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.footer-copywright {
+  text-align: center !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-family: "Fira Code", "SFMono-Regular", Menlo, monospace !important;
+}
+
+.footer-body {
+  z-index: 1;
+  text-align: center !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem !important;
+}
+
+.footer-icons li.social-icons {
+  list-style: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.footer-icons a.meyriva-social-link,
+.footer-icons .meyriva-social-link,
+.footer-icons .meyriva-social-link * {
+  background: transparent !important;
+  box-shadow: none !important;
+}

@@ -3,7 +3,6 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 import "./LandingPage.css";
-import heroImg from '../Assets/image.png';
 
 const LandingPage = () => {
   const [featured, setFeatured] = useState([]);
@@ -19,30 +18,24 @@ const LandingPage = () => {
       <Container className="py-5">
         {/* Hero Section */}
         <Row className="align-items-center mb-5">
-          <Col md={7}>
-            <h1 className="display-3 fw-bold mb-3">Welcome to <span className="gradient-text">The Digital Pen</span></h1>
-            <p className="lead mb-4">
-              Explore insights, practical tutorials, and inspiring stories on technology, creativity, productivity, news and more.
+          <Col md={12}>
+            <p className="terminal-prompt mb-2">~$ ./blog --init</p>
+            <h1 className="mb-3 terminal-title">Welcome to <span className="gradient-text">Himanshu's Writing</span></h1>
+            <p className="lead mb-3">
+              Engineering notes, experiments, and things I learn while building software, AI systems, and developer tools.
             </p>
             <Button
               size="lg"
-              className="hero-cta"
+              className="hero-cta terminal-btn"
               onClick={() => navigate("/articles")}
             >
-              Explore the Articles
+              &gt; explore articles
             </Button>
-          </Col>
-          <Col md={5} className="d-none d-md-block">
-            <img
-              src={heroImg}
-              alt="Boy with laptop and coffee"
-              className="img-fluid hero-img"
-            />
           </Col>
         </Row>
 
         {/* Featured Posts */}
-        <h2 className="mb-4 text-center">Featured Posts</h2>
+        <h2 className="mb-4 text-center terminal-section-title">Featured Posts</h2>
         <Row>
           {featured.map(post => (
             <Col md={4} className="mb-4" key={post._id}>
@@ -68,19 +61,6 @@ const LandingPage = () => {
             </Col>
           ))}
         </Row>
-
-        {/* Call to Action */}
-        <div className="text-center mt-5">
-          <h3>Want updates?</h3>
-          <Button
-            size="lg"
-            variant="success"
-            className="mt-2"
-            onClick={() => window.open("mailto:your@email.com")}
-          >
-            Subscribe to Newsletter
-          </Button>
-        </div>
       </Container>
     </div>
   );

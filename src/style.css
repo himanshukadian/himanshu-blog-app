@@ -5,46 +5,56 @@ html, body, #root {
 }
 
 html {
-  --ai-bg-gradient: linear-gradient(135deg, #232946 0%, #1a1a40 100%);
-  --ai-card-bg: rgba(44, 62, 80, 0.7);
-  --ai-glass-bg: rgba(44, 62, 80, 0.35);
-  --ai-primary: #00e6fe;
-  --ai-secondary: #6C63FF;
-  --ai-accent: #0ff;
-  --ai-text: #f4f4f4;
-  --ai-subtext: #b3b3b3;
-  --ai-glow: 0 0 16px 2px #00e6fe, 0 0 32px 4px #6C63FF;
+  --ai-bg-gradient: linear-gradient(135deg, #000000 0%, #0a120b 100%);
+  --ai-card-bg: rgba(255, 255, 255, 0.03);
+  --ai-glass-bg: rgba(255, 255, 255, 0.05);
+  --ai-primary: #00ff41;
+  --ai-secondary: #00cc33;
+  --ai-accent: #00ff41;
+  --ai-text: #ffffff;
+  --ai-subtext: rgba(255, 255, 255, 0.7);
+  font-family: 'Fira Code', monospace;
   scroll-behavior: smooth;
 }
 
 :root {
-  --primary-color: #00e6fe;
-  --secondary-color: #2563ff;
-  --accent-color: #6C63FF;
-  --text-primary: #232946;
-  --text-secondary: #444;
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #fff;
-  --card-bg: #fff;
-  --card-border: #e0e0e0;
-  --input-bg: #f3f6fa;
-  --input-border: #d1d5db;
+  --primary-color: #00ff41;
+  --secondary-color: #00cc33;
+  --accent-color: #00ff41;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --bg-primary: #000000;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-tertiary: rgba(255, 255, 255, 0.05);
+  --bg-accent: rgba(0, 255, 65, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --imp-text-color: #00ff41;
+  --section-background-color: #000000;
+  --text-color: #ffffff;
   --transition-speed: 0.3s;
 }
 
 /* Dark theme variables */
 [data-theme="dark"] {
-  --primary-color: #00e6fe;
-  --secondary-color: #2563ff;
-  --accent-color: #6C63FF;
-  --text-primary: #f4f4f4;
-  --text-secondary: #b3b3b3;
-  --bg-primary: #181a27;
-  --bg-secondary: #232946;
-  --card-bg: #232946;
-  --card-border: #232946;
-  --input-bg: #232946;
-  --input-border: #232946;
+  --primary-color: #00ff41;
+  --secondary-color: #00cc33;
+  --accent-color: #00ff41;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --bg-primary: #000000;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-tertiary: rgba(255, 255, 255, 0.05);
+  --bg-accent: rgba(0, 255, 65, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --imp-text-color: #00ff41;
+  --section-background-color: #000000;
+  --text-color: #ffffff;
 }
 
 /* Theme transition */
@@ -98,7 +108,7 @@ button:focus {
 
 ::-webkit-scrollbar {
   width: 10px !important;
-  background: #232946 !important;
+  background: #000000 !important;
 }
 
 /* Track */
@@ -110,11 +120,6 @@ button:focus {
 ::-webkit-scrollbar-thumb {
   background: var(--ai-primary) !important;
   border-radius: 8px !important;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ai-accent) !important;
 }
 
 /* --------- */
@@ -135,7 +140,7 @@ button:focus {
   background-color: var(--bg-primary) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
   border: none !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
 }
 
 .navbar-toggler {
@@ -146,7 +151,7 @@ button:focus {
 
 .navbar-toggler span {
   display: block !important;
-  background-color: #be50f4 !important;
+  background-color: #00ff41 !important;
   height: 4px !important;
   width: 27px !important;
   margin-top: 5px !important;
@@ -193,7 +198,7 @@ button:focus {
   .navbar {
     padding: 1rem 2rem !important;
     font-size: 1.4rem !important;
-    background-color: #181a27 !important;
+    background-color: #000000 !important;
   }
   .navbar-nav .nav-item a::after {
     display: none !important;
@@ -211,7 +216,7 @@ button:focus {
 }
 
 .navbar-nav .nav-link {
-  color: #2563ff !important;
+  color: #00cc33 !important;
   font-weight: 500;
   font-size: 1.1rem;
   margin: 0 1.2rem;
@@ -222,9 +227,9 @@ button:focus {
   text-shadow: none !important;
 }
 
-.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
-  color: #2563ff !important;
-  border-bottom: 2px solid #2563ff !important;
+.navbar-nav .nav-link.active {
+  color: #00cc33 !important;
+  border-bottom: 2px solid #00cc33 !important;
   background: none !important;
   text-shadow: none !important;
 }
@@ -331,11 +336,11 @@ button:focus {
 }
 
 .heading, .heading-name {
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif !important;
-  color: #00e6fe !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  color: #ffffff !important;
   text-shadow: none;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
 }
@@ -349,7 +354,7 @@ button:focus {
 }
 
 .main-name {
-  color: var(--ai-secondary);
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -357,12 +362,12 @@ button:focus {
   font-size: 1.1em !important;
   color: var(--ai-accent) !important;
   font-weight: 600 !important;
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
   text-shadow: 0 0 2px var(--ai-accent);
 }
 .Typewriter__cursor {
   font-size: 1.2em !important;
-  color: #b562d6 !important;
+  color: #00ff41 !important;
 }
 
 @media (max-width: 767px) {
@@ -442,21 +447,10 @@ button:focus {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #68187a;
+  background: #00cc33;
   transition: 0.5s;
   transform: scale(0.9);
   z-index: -1;
-}
-
-.home-social-icons:hover::before {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #801f95;
-}
-
-.home-social-icons:hover {
-  color: #87209e;
-  box-shadow: 0 0 5px #87209e;
-  text-shadow: 0 0 2px #87209e;
 }
 
 .social-icons {
@@ -467,7 +461,7 @@ button:focus {
 }
 
 .icon-colour {
-  color: #700c86 !important;
+  color: #00ff41 !important;
 }
 
 /* --------- */
@@ -478,7 +472,7 @@ button:focus {
   bottom: 0 !important;
   padding: 3rem 0 !important;
   border-top: 2px solid var(--bg-primary) !important;
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
   color: var(--text-primary) !important;
 }
 .footer-copywright {
@@ -526,14 +520,8 @@ button:focus {
   font-size: 1.7em;
   transition: color 0.2s, background 0.2s, box-shadow 0.2s;
 }
-.footer-icons a:hover {
-  color: var(--secondary-color) !important;
-  background: rgba(0,230,254,0.08) !important;
-  box-shadow: 0 0 8px var(--primary-color);
-}
-
 .blockquote-footer {
-  color: #a588c0 !important;
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 /* --------- */
 /* Projects */
@@ -563,20 +551,14 @@ button:focus {
 
 /* --- Strong, visible border for project and resume cards --- */
 section .project-card-view, section .resume-content-item {
-  border: 2.5px solid var(--primary-color) !important;
+  border: 1px solid #075d22 !important;
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
   border-radius: 18px !important;
-  box-shadow: 0 4px 24px 0 rgba(0,230,254,0.12) !important;
+  box-shadow: none !important;
   margin-bottom: 2.5rem !important;
   transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
 }
-section .project-card-view:hover, section .resume-content-item:hover {
-  border-color: var(--secondary-color) !important;
-  box-shadow: 0 8px 32px 0 rgba(102,179,255,0.18) !important;
-  transform: translateY(-4px) scale(1.02);
-}
-
 /* Remove duplicate/conflicting card rules */
 .project-card-view > *,
 .resume-content-item > *,
@@ -593,7 +575,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
   margin: 15px !important;
   padding: 20px !important;
   opacity: 0.93 !important;
-  border: 1.7px solid rgba(200, 137, 230, 0.637) !important;
+  border: 1.7px solid rgba(0,255,65,0.25) !important;
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 15px !important;
@@ -601,7 +583,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
+  box-shadow: 4px 5px 4px 3px rgba(0,255,65,0.08) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
   background: var(--bg-primary) !important;
@@ -613,12 +595,6 @@ section .project-card-view:hover, section .resume-content-item:hover {
   margin-top: 10px !important;
   color: var(--text-secondary) !important;
   font-weight: 500 !important;
-}
-
-.tech-icons:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.25) !important;
-  border: 2px solid var(--primary-color) !important;
 }
 
 /* Responsive: keep cards looking good on mobile */
@@ -638,18 +614,12 @@ section .project-card-view:hover, section .resume-content-item:hover {
   padding: 20px !important;
   opacity: 0.95 !important;
   border-radius: 16px !important;
-  border: 2.5px solid var(--ai-primary);
-  box-shadow: 0 0 16px 2px var(--ai-secondary), 0 0 32px 4px var(--ai-accent);
-  background: linear-gradient(135deg, #232946 0%, #6C63FF22 100%);
-  transition: box-shadow 0.3s, border-color 0.3s, filter 0.3s;
+  border: 1px solid #075d22;
+  box-shadow: none;
+  background: #000000;
+  transition: border-color 0.3s;
   position: relative;
   z-index: 1;
-}
-
-.project-card-view:hover .card-img-top {
-  box-shadow: 0 0 32px 8px var(--ai-primary), 0 0 64px 16px var(--ai-accent);
-  border-color: var(--ai-accent);
-  filter: brightness(1.08) saturate(1.2);
 }
 
 .project-card-view .card-body {
@@ -659,12 +629,9 @@ section .project-card-view:hover, section .resume-content-item:hover {
 .project-card-view .card-title {
   font-size: 1.6em !important;
   font-weight: 600 !important;
-  background: linear-gradient(45deg, var(--text-color), var(--imp-text-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin-bottom: 1rem !important;
-  color: var(--imp-text-color) !important;
-  font-family: 'Fira Code', monospace !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
 }
 
 .project-card-view .card-text {
@@ -687,15 +654,10 @@ section .project-card-view:hover, section .resume-content-item:hover {
   gap: 5px;
   padding: 0.5rem 1rem;
   font-size: 0.9em;
-  background-color: rgba(200, 137, 230, 0.2) !important;
-  border: 1px solid rgba(200, 137, 230, 0.4) !important;
+  background-color: rgba(0,255,65,0.08) !important;
+  border: 1px solid rgba(0,255,65,0.2) !important;
   color: white !important;
   transition: all 0.3s ease !important;
-}
-
-.project-buttons .btn:hover {
-  background-color: rgba(200, 137, 230, 0.4) !important;
-  transform: translateY(-2px);
 }
 
 .project-buttons .btn svg {
@@ -713,23 +675,15 @@ section .project-card-view:hover, section .resume-content-item:hover {
 .blog-card-view {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  box-shadow: 0 3px 3px 2px rgba(145, 77, 161, 0.10) !important;
+  box-shadow: none !important;
+  border: 1px solid #075d22 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
-}
-
-.blog-card-view:hover {
-  box-shadow: 0 3px 3px 5px rgba(155, 88, 173, 0.15) !important;
 }
 
 .blog-link {
   color: var(--primary-color) !important;
   text-decoration: none !important;
-}
-
-.blog-link:hover {
-  color: var(--secondary-color) !important;
-  cursor: pointer !important;
 }
 
 .btn-primary {
@@ -742,10 +696,6 @@ section .project-card-view:hover, section .resume-content-item:hover {
   transition: background 0.2s, box-shadow 0.2s;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(90deg, var(--ai-secondary), var(--ai-primary)) !important;
-  box-shadow: 0 0 24px 4px var(--ai-accent);
-}
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
@@ -760,7 +710,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
-  color: #222 !important;
+  color: var(--text-primary) !important;
 }
 
 .tech-icons {
@@ -768,12 +718,12 @@ section .project-card-view:hover, section .resume-content-item:hover {
   margin: 15px !important;
   padding: 10px !important;
   opacity: 0.93 !important;
-  border: 1.7px solid rgba(200, 137, 230, 0.637) !important;
+  border: 1.7px solid rgba(0,255,65,0.25) !important;
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 5px !important;
   display: table !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
+  box-shadow: 4px 5px 4px 3px rgba(0,255,65,0.08) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
   background: var(--card-bg) !important;
@@ -788,11 +738,6 @@ section .project-card-view:hover, section .resume-content-item:hover {
   }
 }
 
-.tech-icons:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2) !important;
-  border-color: var(--hover-color) !important;
-}
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
@@ -824,7 +769,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
   padding-bottom: 30px !important;
   background: var(--section-background-color);
   padding: 5rem 0;
-  color: #222 !important;
+  color: var(--text-primary) !important;
 }
 
 .resume-content {
@@ -858,20 +803,14 @@ section .project-card-view:hover, section .resume-content-item:hover {
 }
 
 .resume-content-item {
-  background: var(--ai-card-bg) !important;
+  background: var(--bg-primary) !important;
   backdrop-filter: blur(16px) !important;
-  border: 1.5px solid #6C63FF !important;
+  border: 1px solid #075d22 !important;
   border-radius: 18px !important;
   padding: 2rem;
   margin-bottom: 2rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10) !important;
-}
-
-.resume-content-item:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 0 32px 4px var(--ai-primary), 0 0 64px 8px var(--ai-secondary) !important;
-  border-color: var(--ai-primary) !important;
+  box-shadow: none !important;
 }
 
 .resume-item-header {
@@ -894,19 +833,19 @@ section .project-card-view:hover, section .resume-content-item:hover {
   font-weight: 600;
   color: #fff;
   margin: 0;
-  color: var(--imp-text-color) !important;
-  font-family: 'Fira Code', monospace !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
 }
 
 .resume-content-item .company {
   font-size: 1em;
-  color: var(--imp-text-color);
+  color: #ffffff;
   font-weight: 500;
 }
 
 .resume-content-item .date {
   font-size: 0.9em;
-  color: #c770f0;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
 }
 
@@ -921,6 +860,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
   color: #fff;
   line-height: 1.6;
   text-align: justify;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .resume-content-item li:last-child {
@@ -968,14 +908,14 @@ section .project-card-view:hover, section .resume-content-item:hover {
 .resume .resume-item {
   padding: 0 0 10px 25px;
   margin-top: -2px;
-  border-left: 2px solid #8a49a8;
+  border-left: 2px solid #00cc33;
   position: relative;
 }
 
 .resume .resume-item .resume-title {
   line-height: 18px;
   font-size: 0.9em;
-  background: #5234795d;
+  background: rgba(0,255,65,0.15);
   padding: 8px 15px;
   display: inline-block;
   font-weight: 600;
@@ -1005,28 +945,22 @@ section .project-card-view:hover, section .resume-content-item:hover {
   left: -9px;
   top: 0;
   background: #fff;
-  border: 2px solid #8a49a8;
+  border: 2px solid #00cc33;
 }
 
 .like-item {
   padding-top: 10px !important;
   font-size: 1.1em !important;
-  font-family: sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
 }
 
 .like-btn {
-  background-color: #934cce5e !important;
-  border-color: #934cce5e !important;
+  background-color: rgba(0,255,65,0.2) !important;
+  border-color: rgba(0,255,65,0.2) !important;
   padding: 0.25rem 0.98rem !important;
   border-radius: 5px !important;
   line-height: 1.4 !important;
   transition: 0.3s ease !important;
-}
-
-.like-btn:hover {
-  transform: translateY(-2px) !important;
-  background-color: #a24dd386 !important;
-  border-color: #a24dd386 !important;
 }
 
 .animate-like {
@@ -1050,17 +984,12 @@ section .project-card-view:hover, section .resume-content-item:hover {
 
 .fork-btn-inner {
   line-height: 1.4em !important;
-  background-color: #934cce5e !important;
+  background-color: rgba(0,255,65,0.2) !important;
   padding: 0.25rem 1.1rem !important;
   vertical-align: middle !important;
   text-align: center !important;
 }
 
-.fork-btn-inner:hover {
-  transform: translateY(-2px) !important;
-  background-color: #a24dd386 !important;
-  border-color: #a24dd386 !important;
-}
 .fork-btn-inner::after {
   display: none !important;
 }
@@ -1087,7 +1016,7 @@ section .project-card-view:hover, section .resume-content-item:hover {
 
 /* Terminal-like Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fira Code', monospace !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
 }
 
 p, li, span {
@@ -1100,12 +1029,6 @@ a {
   text-decoration: none !important;
   border-bottom: 1px dotted var(--primary-color) !important;
   transition: color 0.2s, border-bottom 0.2s;
-}
-
-a:hover {
-  color: var(--secondary-color) !important;
-  border-bottom: 2px solid var(--secondary-color) !important;
-  text-decoration: underline !important;
 }
 
 /* Terminal-like Code Blocks */
@@ -1149,7 +1072,7 @@ pre, code {
 }
 
 .ai-gradient {
-  background: linear-gradient(90deg, #00e6fe, #6C63FF);
+  background: linear-gradient(90deg, #00ff41, #00ff41);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1167,11 +1090,11 @@ pre, code {
 }
 
 .ai-icon svg {
-  filter: drop-shadow(0 0 6px #00e6fe88);
+  filter: none;
 }
 
 .ai-tagline {
-  color: #b3b3b3;
+  color: rgba(255, 255, 255, 0.5);
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -1179,7 +1102,7 @@ pre, code {
   letter-spacing: 0.5px;
   opacity: 0.95;
   animation: ai-fade-in 1.2s 0.3s forwards;
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   text-align: center;
 }
 
@@ -1225,13 +1148,9 @@ pre, code {
 }
 
 .hero-name-gradient {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
   font-weight: 800;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  color: #ffffff;
   margin-bottom: 0.2rem;
   letter-spacing: 2px;
   display: inline-block;
@@ -1245,7 +1164,7 @@ pre, code {
 .hero-accent-underline {
   width: 120px;
   height: 5px;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF);
+  background: linear-gradient(90deg, #00ff41, #00ff41);
   border-radius: 3px;
   margin: 1.2rem auto 1.2rem auto;
   animation: accentLineAnim 2s infinite alternate;
@@ -1257,14 +1176,14 @@ pre, code {
 }
 
 .hero-tagline {
-  color: #b3b3b3;
+  color: rgba(255, 255, 255, 0.5);
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: 400;
   margin-bottom: 1.2rem;
   margin-top: 0.5rem;
   letter-spacing: 0.5px;
   opacity: 0.95;
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .hero-accent-col {
@@ -1278,8 +1197,8 @@ pre, code {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, #6C63FF 0%, #232946 80%);
-  box-shadow: 0 0 80px 0 #6C63FF44, 0 0 120px 0 #00e6fe33;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
   animation: accentBgMove 8s ease-in-out infinite alternate;
 }
 
@@ -1331,8 +1250,8 @@ pre, code {
 section, .about-section, .project-section, .resume-section, .contact-section, .project-card-view, .resume-content-item, .tech-icons, .about-card, .project-heading, .card-title, .card-text {
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
-  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.08) !important;
+  font-family: 'Fira Code', monospace !important;
+  box-shadow: none !important;
   border: 1px solid var(--bg-secondary) !important;
 }
 
@@ -1346,18 +1265,18 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 }
 
 .nav-link.active {
-  color: #ffd600 !important;
-  border-bottom: 3px solid #ffd600 !important;
+  color: #00ff41 !important;
+  border-bottom: 3px solid #00ff41 !important;
   font-weight: 700;
   background: none !important;
   border-radius: 0 !important;
-  text-shadow: 0 0 8px #ffd60088;
+  text-shadow: none;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  color: #7eeeff;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   letter-spacing: 1.5px;
 }
@@ -1365,7 +1284,7 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 .hero-accent-line {
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF);
+  background: linear-gradient(90deg, #00ff41, #00ff41);
   border-radius: 2px;
   margin: 0.5rem auto 1.2rem auto;
   animation: accentLineAnim 2s infinite alternate;
@@ -1393,14 +1312,15 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 .hero-im {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
   font-weight: 700;
-  color: #00e6fe;
+  color: #ffffff;
   margin-right: 0.5rem;
 }
 
 .hero-name {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
   font-weight: 800;
   letter-spacing: 1.5px;
+  color: #ffffff;
 }
 
 .ai-icon-inline {
@@ -1410,20 +1330,16 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 }
 
 .home-glass-card {
-  background: rgba(44, 62, 80, 0.7);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(14px);
   border-radius: 20px;
-  box-shadow: 0 4px 32px 0 rgba(44, 62, 80, 0.10);
+  box-shadow: none;
   padding: 2.5rem 2.5rem 2rem 2.5rem;
   margin: 2rem 0;
   max-width: 520px;
   width: 100%;
-  border: 1.5px solid #00e6fe;
-  transition: box-shadow 0.2s;
-}
-
-.home-glass-card:hover {
-  box-shadow: 0 8px 40px 0 rgba(44, 62, 80, 0.18);
+  border: 1px solid #075d22;
+  transition: border-color 0.2s;
 }
 
 .typewriter-row {
@@ -1443,22 +1359,16 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 
 .home-social-icons {
   font-size: 1.5em !important;
-  color: #00e6fe !important;
-  background: rgba(44, 62, 80, 0.18);
+  color: #00ff41 !important;
+  background: rgba(0, 255, 65, 0.18);
   border-radius: 50%;
   padding: 0.35em;
   box-shadow: none;
-  border: 1.5px solid #00e6fe;
+  border: 1.5px solid #00ff41;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.home-social-icons:hover {
-  color: #6C63FF !important;
-  background: rgba(0, 230, 254, 0.10);
-  border-color: #6C63FF;
 }
 
 .home-hero-illustration-col {
@@ -1475,7 +1385,7 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 4px 32px #00e6fe22);
+  filter: drop-shadow(0 4px 32px #00ff4122);
 }
 
 @media (max-width: 991px) {
@@ -1517,11 +1427,11 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 .contact-form-wrapper {
   max-width: 500px;
   margin: 2rem auto 0 auto;
-  background: rgba(44,62,80,0.7);
+  background: rgba(255,255,255,0.03);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
-  border: 1.5px solid #6C63FF;
+  box-shadow: none;
+  border: 1px solid #075d22;
 }
 
 /* --- Split Hero Layout --- */
@@ -1530,7 +1440,7 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
   min-height: 100vh;
   width: 100vw;
   position: relative;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-family: 'Fira Code', monospace;
 }
 .split-left, .split-right {
   flex: 1;
@@ -1559,7 +1469,7 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  box-shadow: 0 4px 32px 0 #6C63FF44;
+  box-shadow: none;
   border: 6px solid var(--bg-primary);
   background: var(--bg-primary);
   object-fit: cover;
@@ -1597,27 +1507,23 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 }
 
 .hero-name-gradient {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
   font-weight: 800;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  color: #ffffff;
   margin-bottom: 0.2rem;
   letter-spacing: 2px;
   display: inline-block;
 }
 
 .hero-tagline {
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.6);
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: 400;
   margin-bottom: 1.2rem;
   margin-top: 0.5rem;
   letter-spacing: 0.5px;
   opacity: 0.95;
-  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .typewriter-row {
@@ -1633,9 +1539,9 @@ section.visible, .about-section.visible, .project-section.visible, .resume-secti
 
 h1, h2, h3 {
   color: var(--text-primary) !important;
-  font-weight: 800 !important;
-  letter-spacing: 1px !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
   margin-bottom: 1.5rem !important;
 }
 
@@ -1647,36 +1553,42 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
   border-radius: 16px !important;
-  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.08) !important;
-  border: 1px solid var(--bg-secondary) !important;
+  box-shadow: none !important;
+  border: 1px solid #075d22 !important;
 }
 
 .project-card-view .card-title {
-  color: var(--primary-color) !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 1.2em !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
 }
 
 .project-card-view .card-text {
   color: var(--text-secondary) !important;
   font-size: 1em !important;
   line-height: 1.6 !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .tech-icons {
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--bg-secondary) !important;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.06) !important;
+  box-shadow: none !important;
   border-radius: 12px !important;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
 }
 
 /* Remove monospace from non-code elements */
-h1, h2, h3, h4, h5, h6, p, li, span, .project-card-view .card-title, .project-card-view .card-text, .about-card, .resume-content-item h3, .resume-content-item li, .resume-content-item .company, .resume-content-item .date {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+h1, h2, h3, h4, h5, h6, .project-card-view .card-title, .resume-content-item h3, .resume-content-item .company, .resume-content-item .date {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+p, li, span, .about-card {
+  font-family: 'Fira Code', monospace !important;
+}
+.project-card-view .card-text, .resume-content-item li {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 li, ul {
@@ -1733,9 +1645,14 @@ li, ul {
   background: none !important;
 }
 
+.resume-content-item p,
+.project-card-view p {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
 /* Section Headings */
 .section-title, .project-heading, .resume-main-title, .about-section h1 {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
   font-size: 2.8rem !important;
   font-weight: 900 !important;
   color: var(--text-primary) !important;
@@ -1753,33 +1670,27 @@ li, ul {
   display: block;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF);
+  background: linear-gradient(90deg, #00ff41, #00ff41);
   border-radius: 2px;
   margin: 1.2rem auto 0 auto;
 }
 
 /* Cards */
 .card, .project-card-view, .resume-content-item, .tech-icons, .about-card, .contact-form-wrapper {
-  border: 2.5px solid var(--primary-color) !important;
+  border: 1px solid #075d22 !important;
   border-radius: 20px !important;
   background: var(--bg-primary) !important;
-  box-shadow: 0 4px 24px 0 rgba(0,230,254,0.08) !important;
+  box-shadow: none !important;
   padding: 2.5rem !important;
   margin-bottom: 2.5rem !important;
-  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
-.card:hover, .project-card-view:hover, .resume-content-item:hover, .tech-icons:hover, .about-card:hover, .contact-form-wrapper:hover {
-  border-color: var(--secondary-color) !important;
-  box-shadow: 0 8px 32px 0 rgba(102,179,255,0.18) !important;
-  transform: translateY(-6px) scale(1.03);
-}
-
 /* Tech/Tool Icons */
 .tech-icons {
-  border: 1.5px solid #b0b6be !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 14px !important;
   background: var(--bg-primary) !important;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.06) !important;
+  box-shadow: none !important;
   padding: 24px 12px 12px 12px !important;
   margin: 18px !important;
   display: flex !important;
@@ -1787,7 +1698,7 @@ li, ul {
   align-items: center !important;
   justify-content: center !important;
   font-size: 3em !important;
-  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 .tech-icons label {
   margin-top: 0.7em;
@@ -1796,12 +1707,6 @@ li, ul {
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-.tech-icons:hover {
-  border-color: var(--primary-color) !important;
-  box-shadow: 0 4px 24px 0 rgba(108,99,255,0.12) !important;
-  transform: translateY(-4px) scale(1.04);
-}
-
 /* Buttons */
 .btn, .btn-primary {
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
@@ -1809,35 +1714,29 @@ li, ul {
   border: none !important;
   border-radius: 10px !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.10) !important;
+  box-shadow: 0 2px 8px 0 rgba(0,255,65,0.10) !important;
   padding: 0.7rem 2.2rem !important;
   min-width: 180px;
   min-height: 48px;
   margin-top: 0.5rem;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.btn:hover, .btn-primary:hover {
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)) !important;
-  box-shadow: 0 4px 16px 0 rgba(37,99,255,0.12) !important;
-  transform: translateY(-2px) scale(1.03);
-}
-
 /* Profile Image */
 .profile-img {
   border-radius: 50%;
   border: 5px solid #fff;
-  box-shadow: 0 8px 40px 0 #6C63FF44;
+  box-shadow: none;
   width: 200px;
   height: 200px;
   object-fit: cover;
   margin: 0 auto 2rem auto;
   display: block;
-  background: linear-gradient(135deg, #00e6fe22, #6C63FF22);
+  background: linear-gradient(135deg, #00ff4122, #00ff4122);
 }
 
 /* Contact Form Inputs */
 .contact-form-wrapper input, .contact-form-wrapper textarea {
-  border: 1.5px solid #b0b6be !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 10px !important;
   padding: 1rem 1.5rem !important;
   font-size: 1.1rem !important;
@@ -1851,8 +1750,16 @@ li, ul {
 }
 
 /* Remove legacy/conflicting monospace styles */
-h1, h2, h3, h4, h5, h6, p, li, span, .project-card-view .card-title, .project-card-view .card-text, .about-card, .resume-content-item h3, .resume-content-item li, .resume-content-item .company, .resume-content-item .date {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+h1, h2, h3, h4, h5, h6, .project-card-view .card-title, .resume-content-item h3, .resume-content-item .company, .resume-content-item .date {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  line-height: 1.75 !important;
+}
+p, li, span, .about-card {
+  font-family: 'Fira Code', monospace !important;
+  line-height: 1.75 !important;
+}
+.project-card-view .card-text, .resume-content-item li {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   line-height: 1.75 !important;
 }
 
@@ -1874,14 +1781,14 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   min-width: 180px;
   min-height: 48px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.10);
+  box-shadow: 0 2px 8px 0 rgba(0,255,65,0.10);
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 /* Footer top border */
 .footer {
   border-top: 2px solid var(--bg-secondary) !important;
-  box-shadow: 0 -2px 16px 0 rgba(44,62,80,0.04) !important;
+  box-shadow: none !important;
 }
 
 /* Print Stylesheet */
@@ -1901,7 +1808,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   }
   .project-card-view, .resume-content-item, .contact-form-wrapper, .tech-icons, .about-card {
     box-shadow: none !important;
-    border: 1px solid #b0b6be !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     background: #fff !important;
     color: #222 !important;
   }
@@ -1940,11 +1847,6 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.modern-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Gradient text */
@@ -2026,7 +1928,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   margin: 0 auto;
   max-width: 98vw;
   transition: background 0.3s, box-shadow 0.3s;
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+  font-family: 'Fira Code', monospace !important;
 }
 
 .modern-navbar .navbar-brand {
@@ -2034,7 +1936,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   font-size: 1.7rem !important;
   letter-spacing: 2px;
   color: var(--primary-color) !important;
-  text-shadow: 0 2px 8px #00e6fe22;
+  text-shadow: 0 2px 8px #00ff4122;
 }
 
 .modern-nav-link {
@@ -2051,7 +1953,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   padding: 0.8rem 1rem !important;
 }
 
-.modern-nav-link.active, .modern-nav-link:focus, .modern-nav-link:hover {
+.modern-nav-link.active, .modern-nav-link:focus {
   color: var(--primary-color) !important;
 }
 
@@ -2060,34 +1962,28 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   display: block;
   width: 0;
   height: 2.5px;
-  background: linear-gradient(90deg, #00e6fe, #6C63FF);
+  background: linear-gradient(90deg, #00ff41, #00ff41);
   border-radius: 2px;
   transition: width 0.3s;
   margin: 0.2rem auto 0 auto;
 }
 
-.modern-nav-link.active::after, .modern-nav-link:focus::after, .modern-nav-link:hover::after {
+.modern-nav-link.active::after, .modern-nav-link:focus::after {
   width: 100%;
 }
 
 .theme-toggle-btn {
-  background: linear-gradient(90deg, #00e6fe 60%, #6C63FF 100%);
+  background: linear-gradient(90deg, #00ff41 60%, #00ff41 100%);
   border: none;
   border-radius: 50%;
   padding: 8px;
   margin-left: 8px;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.10);
+  box-shadow: 0 2px 8px 0 rgba(0,255,65,0.10);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
 }
-.theme-toggle-btn:hover {
-  background: linear-gradient(90deg, #6C63FF 60%, #00e6fe 100%);
-  box-shadow: 0 4px 16px 0 rgba(37,99,255,0.12);
-  transform: scale(1.08);
-}
-
 @media (max-width: 991px) {
   .modern-navbar {
     padding: 0.5rem 0.2rem !important;
@@ -2150,20 +2046,13 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   border-radius: 10px !important;
   font-weight: 700 !important;
   font-size: 1.1rem !important;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.10) !important;
+  box-shadow: 0 2px 8px 0 rgba(0,255,65,0.10) !important;
   padding: 0.7rem 2.2rem !important;
   min-width: 180px;
   min-height: 48px;
   margin-top: 0.5rem;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.resume-section .btn:hover,
-.download-resume-btn:hover {
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)) !important;
-  box-shadow: 0 4px 16px 0 rgba(37,99,255,0.12) !important;
-  transform: translateY(-2px) scale(1.03);
-}
-
 /* Unify all card paddings and border-radius */
 .project-card-view, .resume-content-item, .about-card, .contact-form-wrapper, .tech-icons {
   padding: 2.5rem !important;
@@ -2196,7 +2085,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
 /* --- Markdown & Blog Content Modern Styles --- */
 .markdown-body,
 .markdown-content {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-family: 'Fira Code', monospace;
   color: var(--text-primary);
   background: none;
   line-height: 1.8;
@@ -2209,7 +2098,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
 .markdown-body h4, .markdown-content h4,
 .markdown-body h5, .markdown-content h5,
 .markdown-body h6, .markdown-content h6 {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  font-family: 'Fira Code', monospace;
   font-weight: 800;
   color: var(--text-primary);
   margin-top: 2.2rem;
@@ -2238,9 +2127,9 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   font-size: 1.08rem;
 }
 .markdown-body pre, .markdown-content pre {
-  background: #232946;
+  background: #000000;
   color: #fff;
-  font-family: 'Fira Mono', 'Fira Code', 'Menlo', monospace;
+  font-family: 'Fira Code', monospace;
   border-radius: 8px;
   padding: 1em;
   overflow-x: auto;
@@ -2248,24 +2137,24 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   margin: 1.2em 0;
 }
 .markdown-body code, .markdown-content code {
-  background: #eaeaea;
-  color: #d6336c;
-  font-family: 'Fira Mono', 'Fira Code', 'Menlo', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  color: #00ff41;
+  font-family: 'Fira Code', monospace;
   border-radius: 4px;
   padding: 0.2em 0.4em;
   font-size: 0.98em;
 }
 [data-theme="dark"] .markdown-body pre, [data-theme="dark"] .markdown-content pre {
-  background: #181a27;
+  background: #000000;
   color: #fff;
 }
 [data-theme="dark"] .markdown-body code, [data-theme="dark"] .markdown-content code {
-  background: #232946;
-  color: #00e6fe;
+  background: #000000;
+  color: #00ff41;
 }
 .markdown-body blockquote, .markdown-content blockquote {
   border-left: 4px solid var(--primary-color);
-  background: rgba(0,230,254,0.07);
+  background: rgba(0,255,65,0.07);
   color: var(--text-secondary);
   font-style: italic;
   margin: 1.2em 0;
@@ -2273,7 +2162,7 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   border-radius: 6px;
 }
 [data-theme="dark"] .markdown-body blockquote, [data-theme="dark"] .markdown-content blockquote {
-  background: rgba(0,230,254,0.13);
+  background: rgba(0,255,65,0.13);
   color: var(--text-secondary);
 }
 .markdown-body hr, .markdown-content hr {
@@ -2286,9 +2175,6 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   text-decoration: underline;
   transition: color 0.2s;
 }
-.markdown-body a:hover, .markdown-content a:hover {
-  color: var(--secondary-color);
-}
 /* Responsive font sizes */
 @media (max-width: 767px) {
   .markdown-body h1, .markdown-content h1 { font-size: 1.5rem; }
@@ -2296,6 +2182,95 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   .markdown-body h3, .markdown-content h3 { font-size: 1.05rem; }
 }
 /* Remove monospace from non-code elements */
-h1, h2, h3, h4, h5, h6, p, li, span, .project-card-view .card-title, .project-card-view .card-text, .about-card, .resume-content-item h3, .resume-content-item li, .resume-content-item .company, .resume-content-item .date {
-  font-family: 'Inter', 'Poppins', Arial, sans-serif !important;
+h1, h2, h3, h4, h5, h6, .project-card-view .card-title, .resume-content-item h3, .resume-content-item .company, .resume-content-item .date {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+p, li, span, .about-card {
+  font-family: 'Fira Code', monospace !important;
+}
+.project-card-view .card-text, .resume-content-item li {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* ================================================================
+   HOVER NEUTRALIZATION — terminal theme (public pages)
+   ----------------------------------------------------------------
+   Kills any remaining Bootstrap-driven hover/focus/active RECOLOR
+   (blue/gray flashes, link underline) on public interactive
+   elements. Values are pinned to the terminal base state so hover
+   NEVER changes color/background/border.
+   - Accessibility kept: :focus-visible outlines are NOT removed
+     (no `outline` declarations here) and button :active PRESS
+     feedback (framer-motion scale + Bootstrap inset shadow) is kept.
+   - The portfolio footer's .meyriva-* classes (owned by a teammate
+     in navFooter.css) intentionally keep their own hover and are
+     EXCLUDED here via :not([class*="meyriva-"]).
+   ================================================================ */
+
+/* --- Buttons: hover/focus/active stay terminal green.
+       Border values are already locked to the base state by the
+       component CSS (higher specificity), so we only pin color +
+       background to stop Bootstrap's recolor — keeping every
+       variant's own border/glow exactly as-is. --- */
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: #00ff41 !important;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: transparent !important;
+}
+
+/* Explicitly named Bootstrap variants (primary/outline/secondary) */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  color: #00ff41 !important;
+  background-color: transparent !important;
+}
+
+/* .btn-link is a text link — keep it borderless/no glow */
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+  color: #00ff41 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* --- Nav links: no hover/focus recolor (active/inactive colors are
+       locked by the terminal navbar base rules, which have higher
+       specificity and therefore still win during :hover) --- */
+.nav-link:not([class*="meyriva-"]):hover,
+.nav-link:not([class*="meyriva-"]):focus {
+  background: transparent !important;
+  border-color: transparent !important;
+  text-decoration: none !important;
+}
+
+/* --- Pagination: no hover recolor --- */
+.page-link:hover,
+.page-link:focus,
+.pagination .page-link:hover {
+  color: #00ff41 !important;
+  background-color: transparent !important;
+  border-color: rgba(0, 255, 65, 0.25) !important;
+}
+
+/* --- Plain anchors: no hover recolor/underline (footer meyriva links excluded) --- */
+a:not([class*="meyriva-"]):hover,
+a:not([class*="meyriva-"]):focus {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
 }

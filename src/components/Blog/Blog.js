@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Container, Row, Col, Card, Button, Form, InputGroup } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
@@ -19,25 +19,47 @@ const Blog = () => {
   const [tagSearch, setTagSearch] = useState("");
   const { isDark } = useTheme();
   const [articles, setArticles] = useState([]);
-  const [types, setTypes] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [catalog, setCatalog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [showTagDropdown, setShowTagDropdown] = useState(false);
   const tagSearchRef = useRef(null);
 
-  // Fetch types and tags for filter buttons
+  // Fetch unfiltered catalog of published articles once (independent of page/type/tag filters)
   useEffect(() => {
-    api.get('/types')
-      .then(res => setTypes(res.data.map(t => t.name)));
-    api.get('/tags')
-      .then(res => setTags(res.data));
+    api.get('/articles?limit=200')
+      .then(res => setCatalog(res.data))
+      .catch(() => {});
   }, []);
 
-  // Sync filters from URL on mount (after tags are loaded)
+  // Derive type filter options from the catalog (only types that actually have articles)
+  const types = useMemo(() => {
+    const uniqueTypes = new Set();
+    catalog.forEach(post => {
+      const typeName = post.type?.name || post.type;
+      if (typeName) uniqueTypes.add(typeName);
+    });
+    return [...uniqueTypes].sort((a, b) => String(a).toLowerCase().localeCompare(String(b).toLowerCase()));
+  }, [catalog]);
+
+  // Derive distinct tag docs from the catalog (only tags that actually have articles)
+  const tags = useMemo(() => {
+    const tagMap = new Map();
+    catalog.forEach(post => {
+      (post.tags || []).forEach(t => {
+        const name = typeof t === 'string' ? t : (t?.name || '');
+        if (name && !tagMap.has(name)) {
+          tagMap.set(name, typeof t === 'string' ? { name: t } : t);
+        }
+      });
+    });
+    return [...tagMap.values()].sort((a, b) => String(a.name).toLowerCase().localeCompare(String(b.name).toLowerCase()));
+  }, [catalog]);
+
+  // Sync filters from URL on mount (after catalog is loaded)
   useEffect(() => {
-    if (tags.length === 0) return;
+    if (catalog.length === 0) return;
     const params = new URLSearchParams(location.search);
     const type = params.get('type') || 'All';
     const tagParam = params.get('tag') || '';
@@ -54,7 +76,7 @@ const Blog = () => {
       setTagSearch('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags]);
+  }, [catalog]);
 
   // Update URL when filters change
   useEffect(() => {
@@ -79,7 +101,7 @@ const Blog = () => {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [selectedType, selectedTags, page, tags]);
+  }, [selectedType, selectedTags, page, catalog]);
 
   // Filter by search query (client-side)
   const filteredPosts = articles.filter(post => {
@@ -150,7 +172,7 @@ const Blog = () => {
     }
   };
 
-  if (loading) return <div style={{textAlign: 'center', marginTop: 80}}>Loading...</div>;
+  if (loading && articles.length === 0) return <div style={{textAlign: 'center', marginTop: 80}}>Loading...</div>;
 
   return (
     <section className="resume-section" id="blog">
@@ -180,7 +202,7 @@ const Blog = () => {
           <div className="category-filter mb-5">
             <motion.button
               key="all"
-              whileHover={{ scale: 1.05 }}
+              type="button"
               whileTap={{ scale: 0.95 }}
               className={`category-btn ${selectedType === "All" ? 'active' : ''} ${isDark ? 'dark' : ''}`}
               onClick={() => { setSelectedType("All"); setSelectedTags([]); setPage(1); }}
@@ -190,7 +212,7 @@ const Blog = () => {
             {types.map((type) => (
               <motion.button
                 key={type}
-                whileHover={{ scale: 1.05 }}
+                type="button"
                 whileTap={{ scale: 0.95 }}
                 className={`category-btn ${selectedType === type ? 'active' : ''} ${isDark ? 'dark' : ''}`}
                 onClick={() => { setSelectedType(type); setSelectedTags([]); setPage(1); }}
@@ -214,8 +236,9 @@ const Blog = () => {
                     marginRight: 6,
                     marginLeft: 2,
                     padding: '2px 8px',
-                    background: isDark ? '#2d3a4a' : '#f5f5f5',
+                    background: isDark ? 'rgba(0, 255, 65, 0.12)' : 'rgba(255, 255, 255, 0.08)',
                     borderRadius: 4,
+                    border: '1px solid rgba(0, 255, 65, 0.3)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -227,7 +250,7 @@ const Blog = () => {
                     onClick={() => handleTagClear(tag)}
                     style={{
                       marginLeft: 4,
-                      color: isDark ? '#fff' : '#333',
+                      color: '#fff',
                       fontWeight: 700,
                       cursor: 'pointer',
                       fontSize: 16,
@@ -258,7 +281,7 @@ const Blog = () => {
                   onClick={() => handleTagClear()}
                   style={{
                     marginLeft: 6,
-                    color: isDark ? '#fff' : '#333',
+                    color: '#00ff41',
                     fontWeight: 700,
                     cursor: 'pointer',
                     fontSize: 18,
@@ -279,10 +302,10 @@ const Blog = () => {
                   top: '100%',
                   left: 0,
                   width: '100%',
-                  background: isDark ? '#232b39' : '#fff',
-                  border: '1px solid #2d3a4a',
+                  background: isDark ? '#000000' : '#0d0d0d',
+                  border: '1px solid rgba(0, 255, 65, 0.35)',
                   borderRadius: 6,
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  boxShadow: '0 4px 18px rgba(0, 0, 0, 0.6)',
                   zIndex: 1000,
                   marginTop: 2,
                 }}
@@ -294,24 +317,36 @@ const Blog = () => {
                     style={{
                       padding: '10px 16px',
                       cursor: 'pointer',
-                      color: isDark ? '#fff' : '#333',
+                      color: '#fff',
                       borderRadius: 4,
-                      background: selectedTags.includes(tag.name) ? (isDark ? '#2d3a4a' : '#e0e0e0') : 'transparent',
+                      background: selectedTags.includes(tag.name) ? 'rgba(0, 255, 65, 0.14)' : 'transparent',
                       fontWeight: selectedTags.includes(tag.name) ? 600 : 400,
                     }}
                     onClick={() => handleTagSelect(tag.name)}
-                    onMouseOver={e => (e.currentTarget.style.background = isDark ? '#2d3a4a' : '#f5f5f5')}
-                    onMouseOut={e => (e.currentTarget.style.background = selectedTags.includes(tag.name) ? (isDark ? '#2d3a4a' : '#e0e0e0') : 'transparent')}
                   >
                     {tag.name}
                     {selectedTags.includes(tag.name) && (
-                      <span style={{ marginLeft: 8, color: isDark ? '#00e6fe' : '#007bff' }}>✓</span>
+                      <span style={{ marginLeft: 8, color: '#00ff41' }}>✓</span>
                     )}
                   </div>
                 ))}
               </div>
             )}
           </div>
+
+          {loading && articles.length > 0 && (
+            <span
+              style={{
+                display: 'block',
+                marginBottom: 12,
+                color: '#00ff41',
+                fontFamily: "'JetBrains Mono','Fira Code',monospace",
+                fontSize: '0.8rem',
+              }}
+            >
+              &gt; refreshing…
+            </span>
+          )}
 
           {/* Blog Posts Grid */}
           <AnimatePresence>
@@ -326,7 +361,6 @@ const Blog = () => {
                   <Col key={post._id} md={6} lg={4} className="mb-4 d-flex align-items-stretch">
                     <motion.div
                       variants={itemVariants}
-                      whileHover={{ y: -10 }}
                       transition={{ duration: 0.2 }}
                       className="w-100"
                     >
@@ -334,7 +368,7 @@ const Blog = () => {
                         <Card.Body className="d-flex flex-column">
                           <Card.Title className="h4 mb-3">{post.title}</Card.Title>
                           <div 
-                            className="card-text mb-4" 
+                            className="card-text card-excerpt mb-4" 
                             dangerouslySetInnerHTML={{ 
                               __html: post.content ? 
                                 post.content.replace(/<[^>]*>/g, '').substring(0, 120) + '...' : 
@@ -344,7 +378,7 @@ const Blog = () => {
                           <div className="post-meta mb-3">
                             <span className="me-3">
                               <FaCalendarAlt className="me-1" />
-                              {new Date(post.publishedAt || post.createdAt || '').toLocaleDateString()}
+                              {new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                             </span>
                             <span>
                               <FaClock className="me-1" />
@@ -374,7 +408,7 @@ const Blog = () => {
                           <Button 
                             variant="primary" 
                             className="w-100 read-more-btn mt-auto"
-                            onClick={() => window.location.href = `/${post.slug}`}
+                            onClick={() => navigate(`/${post.slug}`)}
                           >
                             Read Article
                           </Button>
