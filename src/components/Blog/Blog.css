@@ -10,6 +10,39 @@
   color: #ffffff;
 }
 
+/* Terminal-style section title */
+.terminal-section-title {
+  color: #00ff41;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem !important;
+  border-bottom: 1px solid #075d22;
+  text-shadow: none;
+}
+
+.terminal-section-title::before {
+  content: '> ';
+  color: #00ff41;
+  text-shadow: none;
+}
+
+/* Search feedback line */
+.search-feedback {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.25rem;
+}
+
+.search-feedback .writing-heading-prompt {
+  color: #00ff41;
+}
+
 .blog-header {
   margin-bottom: 3rem;
   text-align: center;

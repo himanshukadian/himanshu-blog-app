@@ -86,7 +86,8 @@ function AppContent() {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/articles" element={<Blog />} />
+              <Route path="/writings" element={<Blog />} />
+              <Route path="/articles" element={<Navigate to="/writings" replace />} />
               <Route path="/:slug" element={<BlogDetail />} />
               <Route path="/login" element={<AdminLogin />} />
               <Route element={<PrivateRoute />}>

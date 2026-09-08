@@ -71,17 +71,17 @@ function NavBar() {
               <Nav.Item>
                 <Nav.Link
                   as={RouterLink}
-                  to="/articles"
-                  className={`modern-nav-link terminal-nav-link${location.pathname === '/articles' ? ' active' : ''}`}
+                  to="/writings"
+                  className={`modern-nav-link terminal-nav-link${location.pathname === '/writings' ? ' active' : ''}`}
                   style={{
-                    color: location.pathname === '/articles' ? '#00ff41' : 'rgba(255, 255, 255, 0.85)',
+                    color: location.pathname === '/writings' ? '#00ff41' : 'rgba(255, 255, 255, 0.85)',
                     fontWeight: 700,
                     fontSize: 18,
-                    borderBottom: location.pathname === '/articles' ? '2.5px solid #00ff41' : 'none',
+                    borderBottom: location.pathname === '/writings' ? '2.5px solid #00ff41' : 'none',
                     padding: '0.5rem 1rem',
                   }}
                 >
-                  Articles
+                  Writings
                 </Nav.Link>
               </Nav.Item>
             </Nav>

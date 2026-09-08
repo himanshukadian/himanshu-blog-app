@@ -44,7 +44,7 @@ const LandingPage = () => {
   return (
     <div className="landing-hero-bg">
       <Container className="py-5">
-        <h2 className="terminal-section-title">Featured Posts</h2>
+        <h2 className="terminal-section-title">Featured Writings</h2>
 
         {status === "loading" && <div className="writing-status">loading posts…</div>}
 
@@ -90,8 +90,8 @@ const LandingPage = () => {
         )}
 
         <div className="writing-footer">
-          <Link className="writing-all-link" to="/articles">
-            All writing →
+          <Link className="writing-all-link" to="/writings">
+            All writings →
           </Link>
         </div>
       </Container>
