@@ -2010,8 +2010,8 @@ section, .about-section, .project-section, .resume-section, .contact-section {
   }
 }
 
-/* Remove all borders, box-shadows, and underlines from resume section and its lists */
-.resume-section *, .resume-content-item, .resume-content-item *, .resume-content-item ul, .resume-content-item li {
+/* Remove all borders, box-shadows, and underlines from resume content lists */
+.resume-content-item, .resume-content-item *, .resume-content-item ul, .resume-content-item li {
   border: none !important;
   box-shadow: none !important;
   background: none !important;
