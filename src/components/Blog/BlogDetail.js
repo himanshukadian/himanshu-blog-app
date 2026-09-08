@@ -90,7 +90,7 @@ const BlogDetail = () => {
 
   return (
     <section className="terminal-detail resume-section" style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
-      <Container>
+      <Container fluid>
         <div style={{ maxWidth: 760, padding: '3rem 0' }}>
           <Button variant="link" onClick={() => navigate('/writings')} className="mb-3" style={{ textDecoration: 'none', color: '#00ff41', fontWeight: 600, paddingLeft: 0, paddingRight: 0 }}>
             <FaArrowLeft className="me-2" />Back to writings
