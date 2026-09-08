@@ -66,23 +66,29 @@
 .terminal-detail .markdown-content code {
   font-family: 'Fira Code', 'JetBrains Mono', monospace;
   color: #7dffa0;
-  background: rgba(0, 255, 65, 0.08);
-  padding: 0.15rem 0.3rem;
+  background: rgba(0, 255, 65, 0.08) !important;
+  border: none !important;
   border-radius: 4px;
+  padding: 0.15rem 0.3rem;
 }
 
 .terminal-detail .markdown-content pre {
-  background: #0a0a0a;
-  border: 1px solid rgba(0, 255, 65, 0.15);
+  display: block;
+  background: #0a0a0a !important;
+  border: 1px solid rgba(0, 255, 65, 0.15) !important;
   padding: 1rem;
   border-radius: 6px;
   overflow-x: auto;
 }
 
 .terminal-detail .markdown-content pre code {
-  background: transparent;
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   padding: 0;
   color: #00ff41;
+  border-radius: 0;
 }
 
 .terminal-detail .markdown-content kbd {
